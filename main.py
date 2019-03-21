@@ -5,11 +5,13 @@ from os.path import isfile, join, splitext
 
 
 def file_len(filename):
+    i = 0
+
     with open(filename, errors="ignore") as f:
-        for i, l in enumerate(f):
+        for i, l in enumerate(f, 1):
             pass
-        return i + 1
-    return 0
+
+    return i
 
 
 def get_all_files(path, extensions, excluded_dirs=[]):
