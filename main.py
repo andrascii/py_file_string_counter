@@ -3,12 +3,9 @@ import argparse
 from os import listdir
 from os.path import isfile, join, splitext
 
-# C:\develop\repositories\quickiewebbot
-# build googletest gumbo myhtml qtxlsxwriter quazip qxtsmtp zlib thirdparty
-
 
 def file_len(filename):
-    with open(filename) as f:
+    with open(filename, errors="ignore") as f:
         for i, l in enumerate(f):
             pass
         return i + 1
@@ -76,17 +73,11 @@ def main():
     print("Found", len(all_target_files), "files")
 
     string_count = 0
-    skipped_files_count = 0
 
     for f in all_target_files:
-        try:
-            string_count += file_len(f)
-
-        except UnicodeDecodeError:
-            skipped_files_count += 1
+        string_count += file_len(f)
 
     print("String count in all files:", string_count)
-    print("Skipped files count:", skipped_files_count)
 
 
 if __name__ == "__main__":
