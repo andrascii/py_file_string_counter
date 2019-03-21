@@ -20,7 +20,7 @@ def get_all_files(path, extensions, excluded_dirs=[]):
         for f in listdir(path):
             full_path = join(path, f)
             is_file = isfile(full_path)
-            filepath, file_extension = splitext(full_path)  # how to suppress warning about non used filepath variable?
+            _, file_extension = splitext(full_path)
 
             if is_file and file_extension.strip(".") in extensions:
                 all_files.append(full_path)
